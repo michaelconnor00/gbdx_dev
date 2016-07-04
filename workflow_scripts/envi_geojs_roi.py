@@ -30,7 +30,7 @@ outputPorts:
       description: Outputor OUTPUT_ROI. -- Value Type: ENVIURI
 
 """
-import json
+
 from gbdxtools import Interface
 
 
@@ -41,7 +41,7 @@ geojson = """
 """
 
 geojson_roi = gbdx.Task("ENVI_GeoJSONToROI")
-geojson_roi.inputs.input_geojson = geojson#json.dumps(geojson_roi)
+geojson_roi.inputs.input_geojson = geojson
 geojson_roi.inputs.output_roi_uri_filename = 'roi.xml' # Required else the output file will be converted and error
 
 workflow = gbdx.Workflow([geojson_roi])
