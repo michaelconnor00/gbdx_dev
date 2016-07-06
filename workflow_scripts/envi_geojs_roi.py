@@ -41,17 +41,19 @@ geojson = """
 """
 
 geojson_roi = gbdx.Task("ENVI_GeoJSONToROI")
+
 geojson_roi.inputs.input_geojson = geojson
 geojson_roi.inputs.output_roi_uri_filename = 'roi.xml' # Required else the output file will be converted and error
 
 workflow = gbdx.Workflow([geojson_roi])
+
 workflow.savedata(
     geojson_roi.outputs.output_roi_uri,
-    location='s3://test-tdgplatform-com/tempENVI/GeoJSONToROI/'
+    location='GeoJSONToROI/'
 )
 workflow.savedata(
     geojson_roi.outputs.task_meta_data,
-    location='s3://test-tdgplatform-com/tempENVI/GeoJSONToROI/'
+    location='GeoJSONToROI/'
 )
 
 # from utils import export_workflow
