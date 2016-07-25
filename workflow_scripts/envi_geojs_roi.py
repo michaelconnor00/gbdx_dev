@@ -56,7 +56,7 @@ workflow.savedata(
     location='GeoJSONToROI/'
 )
 
-# from utils import export_workflow
-# print export_workflow(workflow)
+from utils import export_workflow
+print export_workflow(workflow)
 
-print workflow.execute()
+# print workflow.execute()

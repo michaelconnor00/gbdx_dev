@@ -1,0 +1,55 @@
+{
+  "containerDescriptors": [
+    {
+      "command": "python /applications/envi_task_runner/envi_task_runner.py GeoJSONToROI",
+      "type": "DOCKER",
+      "properties": {
+        "image": "tdgp/envi_task_runner:latest"
+      }
+    }
+  ],
+  "description": "This task converts GeoJSON features to a region of interest (ROI).",
+  "inputPortDescriptors": [
+    {
+      "required": false,
+      "type": "string",
+      "description": "GBDX Option. Comma seperated list of permitted file type extensions. Use this to filter input files -- Value Type: STRING[*]",
+      "name": "file_types"
+    },
+    {
+      "required": false,
+      "type": "string",
+      "description": "Outputor OUTPUT_ROI. -- Value Type: ENVIURI",
+      "name": "output_roi_uri_filename",
+      "multiplex": true
+    },
+    {
+      "required": true,
+      "type": "string",
+      "description": "Specify an input GeoJSON object. -- Value Type: ENVIGEOJSON",
+      "name": "input_geojson",
+      "multiplex": true
+    }
+  ],
+  "outputPortDescriptors": [
+    {
+      "required": false,
+      "type": "directory",
+      "description": "GBDX Option. Output location for task meta data such as execution log and output JSON",
+      "name": "task_meta_data",
+      "multiplex": true
+    },
+    {
+      "required": true,
+      "type": "directory",
+      "description": "Outputor OUTPUT_ROI. -- Value Type: ENVIURI",
+      "name": "output_roi_uri",
+      "multiplex": true
+    }
+  ],
+  "properties": {
+    "isPublic": true,
+    "timeout": 36000
+  },
+  "name": "Multiplex_GeoJSONToROI_MC"
+}
